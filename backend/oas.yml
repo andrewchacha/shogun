@@ -1,0 +1,239 @@
+components:
+  schemas:
+    "": {}
+    Chain:
+      type: string
+    Image:
+      properties:
+        blurhash:
+          type: string
+        uri:
+          type: string
+      type: object
+    Meta:
+      properties:
+        last_name_update:
+          type: integer
+        last_username_update:
+          type: integer
+      type: object
+    Simple:
+      properties:
+        address:
+          type: string
+        chain:
+          $ref: '#/components/schemas/Chain'
+          type: string
+        signature:
+          type: string
+      type: object
+    User:
+      properties:
+        bio:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+          type: object
+        name:
+          type: string
+        string:
+          type: integer
+        thumbnail:
+          $ref: '#/components/schemas/Image'
+          type: object
+        updated_at:
+          format: date-time
+          type: string
+        username:
+          type: string
+      type: object
+    access_token:
+      type: string
+    accounts:
+      items:
+        properties:
+          address:
+            type: string
+          chain:
+            $ref: '#/components/schemas/Chain'
+            type: string
+          link_signature:
+            type: string
+          proof_signature:
+            type: string
+        type: object
+      type: array
+    addAccountItem:
+      properties:
+        address:
+          type: string
+        chain:
+          $ref: '#/components/schemas/Chain'
+          type: string
+        link_signature:
+          type: string
+        proof_signature:
+          type: string
+      type: object
+    addAccountParams:
+      properties:
+        accounts:
+          items:
+            properties:
+              address:
+                type: string
+              chain:
+                $ref: '#/components/schemas/Chain'
+                type: string
+              link_signature:
+                type: string
+              proof_signature:
+                type: string
+            type: object
+          type: array
+        public_key:
+          $ref: '#/components/schemas/'
+        timestamp:
+          type: integer
+      type: object
+    address:
+      type: string
+    bio:
+      type: string
+    chain:
+      $ref: '#/components/schemas/Chain'
+      type: string
+    chain.Chain:
+      type: string
+    created_at:
+      format: date-time
+      type: string
+    expires_in:
+      type: integer
+    is_new_user:
+      type: boolean
+    link_signature:
+      type: string
+    loginSuccessResponse:
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+        is_new_user:
+          type: boolean
+      type: object
+    meResponse:
+      properties:
+        accounts:
+          items:
+            properties:
+              address:
+                type: string
+              chain:
+                $ref: '#/components/schemas/Chain'
+                type: string
+              signature:
+                type: string
+            type: object
+          type: array
+        bio:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+          type: object
+        name:
+          type: string
+        string:
+          type: integer
+        thumbnail:
+          $ref: '#/components/schemas/Image'
+          type: object
+        updated_at:
+          format: date-time
+          type: string
+        username:
+          type: string
+      type: object
+    meta:
+      $ref: '#/components/schemas/Meta'
+      type: object
+    name:
+      type: string
+    proof_signature:
+      type: string
+    public_key:
+      $ref: '#/components/schemas/'
+    string:
+      type: integer
+    thumbnail:
+      $ref: '#/components/schemas/Image'
+      type: object
+    timestamp:
+      type: integer
+    updated_at:
+      format: date-time
+      type: string
+    username:
+      type: string
+info:
+  contact:
+    email: baraka@shogun.social
+    name: Baraka Andrew
+  description: This is the API for Shogun Social, used for both Desktop and Mobile
+    app.
+  license:
+    name: Proprietary License
+  termsOfService: http://someurl.oxox
+  title: Shogun API
+  version: "1.0"
+openapi: 3.0.0
+paths:
+  /auth/login:
+    get:
+      description: ' Authenticates user based on the provided timestamp and signature,
+        along with the required Solana public key in the headers.'
+      parameters:
+      - description: Timestamp of the login request
+        in: query
+        name: timestamp
+        required: true
+        schema:
+          description: Timestamp of the login request
+          format: int64
+          type: integer
+      - description: Signature for the login request
+        in: query
+        name: signature
+        required: true
+        schema:
+          description: Signature for the login request
+          format: string
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/loginSuccessResponse'
+          description: User is successfully authenticated
+      summary: User Login
+  /user/me:
+    get:
+      description: ' Get my profile'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/meResponse'
+          description: ""
+      summary: Get my profile
+servers:
+- url: https://api.shogun.social

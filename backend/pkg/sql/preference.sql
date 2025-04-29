@@ -1,0 +1,6 @@
+CREATE TABLE shogun.preferences (
+    user_id BIGINT NOT NULL PRIMARY KEY,
+    meta JSONB NOT NULL DEFAULT '{}'::JSONB,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS shogun.token (
+    address VARCHAR(100) PRIMARY KEY,
+    symbol VARCHAR(15) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    chain VARCHAR(20) NOT NULL,
+    decimals INTEGER NOT NULL,
+    logo TEXT NOT NULL DEFAULT '',
+    meta JSONB NOT NULL DEFAULT '{}',
+    status SMALLINT NOT NULL DEFAULT 0,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+)

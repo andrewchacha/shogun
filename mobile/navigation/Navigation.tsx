@@ -1,46 +1,45 @@
-import {FontAwesome6, Ionicons} from '@expo/vector-icons';
+import MultiAccountModal, {MultiAccountModalController} from '@/components/MultiAccountModal/MultiAccountModal';
 import {useAppTheme} from '@/hooks/utility/useAppTheme';
-import {navigationRef} from '@/navigation/shared';
+import {TabMyProfile} from '@/navigation/TabMyProfile';
+import {navigationRef, tabStyles} from '@/navigation/shared';
+import AddressBook from '@/screens/AddressBook/AddressBook';
+import ChatRequests from '@/screens/ChatRequests/ChatRequests';
+import ChatRoom from '@/screens/ChatRoom/ChatRoom';
+import Contacts from '@/screens/Contacts/Contacts';
+import EditBio from '@/screens/EditProfile/EditBio';
+import EditName from '@/screens/EditProfile/EditName';
+import EditProfile from '@/screens/EditProfile/EditProfile';
+import EditUsername from '@/screens/EditProfile/EditUsername';
+import EncryptPassphrase from '@/screens/EncryptPassphrase/EncryptPassphrase';
+import Chats from '@/screens/Main/Chats/Chats';
+import Discover from '@/screens/Main/Discover/Discover';
+import MyProfile from '@/screens/Main/MyProfile/MyProfile';
+import MyAddressQrCode from '@/screens/MyAddressQRCode/MyAddressQrCode';
+import Privacy from '@/screens/Privacy/Privacy';
+import RafikiList from '@/screens/RafikiList/RafikiList';
+import ScanQR from '@/screens/ScanQR/ScanQR';
+import SearchRafiki from '@/screens/SearchRafiki/SearchRafiki';
+import SearchUsername from '@/screens/SearchUsername/SearchUsername';
+import SendCrypto from '@/screens/SendCrypto/SendCrypto';
+import SendCryptoAddress from '@/screens/SendCrypto/SendCryptoAddress';
+import SendCryptoConfirm from '@/screens/SendCrypto/SendCryptoConfirm';
+import Settings from '@/screens/Settings/Settings';
+import SettingsAccount from '@/screens/Settings/SettingsAccount';
+import Swap from '@/screens/Swap/Swap';
+import TokenList from '@/screens/TokenList/TokenList';
+import WalletImport from '@/screens/WalletImport/WalletImport';
+import WalletNew from '@/screens/WalletNew/WalletNew';
+import WalletRecovery from '@/screens/WalletRecovery/WalletRecovery';
+import Welcome from '@/screens/Welcome/Welcome';
+import {getAccountStore} from '@/storage/accountStore';
+import type {AppTheme} from '@/utils/styles';
+import {FontAwesome6, Ionicons} from '@expo/vector-icons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import EncryptPassphrase from '@/screens/EncryptPassphrase/EncryptPassphrase';
-import Discover from '@/screens/Main/Discover/Discover';
-import MyProfile from '@/screens/Main/MyProfile/MyProfile';
-import Chats from '@/screens/Main/Chats/Chats';
-import WalletImport from '@/screens/WalletImport/WalletImport';
-import WalletNew from '@/screens/WalletNew/WalletNew';
-import Welcome from '@/screens/Welcome/Welcome';
-import type {AppTheme} from '@/utils/styles';
 import type React from 'react';
 import {useMemo} from 'react';
 import type {CommonStackList, MainTabParamList, RootStackParamList, RootStackScreenProps} from './types';
-import ChatRoom from '@/screens/ChatRoom/ChatRoom';
-import ChatRequests from '@/screens/ChatRequests/ChatRequests';
-import Contacts from '@/screens/Contacts/Contacts';
-import MyAddressQrCode from '@/screens/MyAddressQRCode/MyAddressQrCode';
-import TokenList from '@/screens/TokenList/TokenList';
-import Privacy from '@/screens/Privacy/Privacy';
-import WalletRecovery from '@/screens/WalletRecovery/WalletRecovery';
-import EditProfile from '@/screens/EditProfile/EditProfile';
-import EditName from '@/screens/EditProfile/EditName';
-import EditUsername from '@/screens/EditProfile/EditUsername';
-import EditBio from '@/screens/EditProfile/EditBio';
-import {TabMyProfile} from '@/navigation/TabMyProfile';
-import {tabStyles} from '@/navigation/shared';
-import SendCrypto from '@/screens/SendCrypto/SendCrypto';
-import Swap from '@/screens/Swap/Swap';
-import MultiAccountModal, {MultiAccountModalController} from '@/components/MultiAccountModal/MultiAccountModal';
-import SendCryptoAddress from '@/screens/SendCrypto/SendCryptoAddress';
-import SendCryptoConfirm from '@/screens/SendCrypto/SendCryptoConfirm';
-import ScanQR from '@/screens/ScanQR/ScanQR';
-import {getAccountStore} from '@/storage/accountStore';
-import Settings from '@/screens/Settings/Settings';
-import SettingsAccount from '@/screens/Settings/SettingsAccount';
-import AddressBook from '@/screens/AddressBook/AddressBook';
-import SearchUsername from '@/screens/SearchUsername/SearchUsername';
-import SearchRafiki from '@/screens/SearchRafiki/SearchRafiki';
-import RafikiList from '@/screens/RafikiList/RafikiList';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -49,6 +48,7 @@ const Navigation: React.FC = () => {
 
     const navigationTheme = useMemo(() => {
         return {
+            ...DefaultTheme,
             dark: theme.scheme === 'dark',
             colors: {
                 ...DefaultTheme.colors,

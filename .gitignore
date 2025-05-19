@@ -20,9 +20,9 @@ web-build/
 .metro-health-check*
 
 # debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
+/npm-debug.*
+/yarn-debug.*
+/yarn-error.*
 
 # macOS
 .DS_Store

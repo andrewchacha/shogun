@@ -19,7 +19,8 @@
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photos.",
         "NSPhotoLibraryAddUsageDescription": "Allow $(PRODUCT_NAME) to save photos.",
-        "NSFaceIDUsageDescription": "Allow $(PRODUCT_NAME) to use Face ID."
+        "NSFaceIDUsageDescription": "Allow $(PRODUCT_NAME) to use Face ID.",
+        "NSCameraUsageDescription": "$(PRODUCT_NAME) needs access to your Camera to scan QR codes."
       },
       "splash": {
         "image": "./assets/splash.png",
@@ -31,7 +32,8 @@
           "backgroundColor": "#161B22"
         }
       },
-      "bundleIdentifier": "shogun.social"
+      "bundleIdentifier": "shogun.social",
+      "appleTeamId": "8YKWYHNG3G"
     },
     "android": {
       "adaptiveIcon": {
@@ -48,7 +50,15 @@
           "backgroundColor": "#161B22"
         }
       },
-      "package": "shogun.social"
+      "package": "shogun.social",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.USE_BIOMETRIC",
+        "android.permission.USE_FINGERPRINT"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -91,7 +101,7 @@
             "kotlinVersion": "1.6.21"
           },
           "ios": {
-            "deploymentTarget": "13.4"
+            "deploymentTarget": "15.1"
           }
         }
       ],

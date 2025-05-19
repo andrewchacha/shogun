@@ -1,8 +1,6 @@
 {
   "expo.jsEngine": "hermes",
   "EX_DEV_CLIENT_NETWORK_INSPECTOR": "true",
-  "ios.deploymentTarget": "13.4",
-  "apple.extraPods": "[]",
-  "apple.ccacheEnabled": "false",
+  "ios.deploymentTarget": "15.1",
   "apple.privacyManifestAggregationEnabled": "true"
 }

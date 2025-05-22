@@ -62,6 +62,7 @@ export type RootStackParamList = {
     ScanQR: undefined;
     SearchUsername: {searchId: string};
     SearchRafiki: undefined;
+    Circle: {id: string; name: string; thumbnail: string};
 };
 
 export type CommonStackScreenProps<Screen extends keyof CommonStackList> = NativeStackScreenProps<

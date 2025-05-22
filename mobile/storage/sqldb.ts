@@ -21,6 +21,16 @@ export class SqlDB {
         return this.db;
     }
 
+    public hasAccounts() {
+        if (!this.db) {
+            throw new Error('DB not initialized');
+        }
+        const {rows} = this.getDb().executeSync('SELECT COUNT(*) as count FROM wallet');
+        if (!rows) return false;
+        const count = rows[0].count as number;
+        return count > 0;
+    }
+
     public init = (encryptionKey: string) => {
         this.db = open({name: dbName, encryptionKey});
     };

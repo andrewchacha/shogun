@@ -16,6 +16,7 @@
     "@expo-google-fonts/poppins": "^0.3.1",
     "@expo/vector-icons": "^14.1.0",
     "@gorhom/bottom-sheet": "^5.1.4",
+    "@legendapp/list": "^1.0.14",
     "@mysten/sui": "^1.30.0",
     "@noble/hashes": "^1.8.0",
     "@op-engineering/op-s2": "^0.1.11",

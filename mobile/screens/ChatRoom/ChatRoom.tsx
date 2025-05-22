@@ -52,7 +52,7 @@ const ChatRoom = ({navigation}: RootStackScreenProps<'ChatRoom'>) => {
     }, []);
 
     return (
-        <KeyboardGestureArea interpolator="ios">
+        <KeyboardGestureArea interpolator="ios" style={{flex: 1}}>
             <Reanimated.ScrollView
                 style={[styles.container, {transform: [{translateY: -height.value}]}]}
                 ref={scrollViewRef}

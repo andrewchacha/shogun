@@ -54,7 +54,7 @@ class AccountStore {
             );
         `;
         const accountIndex1 = `
-            CREATE UNIQUE INDEX IF NOT EXISTS idx_wallet_path 
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_wallet_path
             ON account (wallet_id, path_index);
         `;
 
@@ -74,10 +74,10 @@ class AccountStore {
             );
         `;
 
-        this.db.execute(walletTableQuery);
-        this.db.execute(accountTable);
-        this.db.execute(accountIndex1);
-        this.db.execute(secretsTable);
+        this.db.executeSync(walletTableQuery);
+        this.db.executeSync(accountTable);
+        this.db.executeSync(accountIndex1);
+        this.db.executeSync(secretsTable);
     }
 
     public createNewWallet = async (mnemonic: string) => {
@@ -117,24 +117,24 @@ class AccountStore {
         }));
 
         return this.db.transaction(async (tx: Transaction) => {
-            tx.execute('INSERT INTO wallet (id, label, mnemonic, created_at) VALUES (?, ?, ?, ?)', [
+            await tx.execute('INSERT INTO wallet (id, label, mnemonic, created_at) VALUES (?, ?, ?, ?)', [
                 newWallet.id,
                 newWallet.label,
                 newWallet.mnemonic,
                 newWallet.created_at,
             ]);
-            tx.execute('INSERT INTO account (id, wallet_id, path_index) VALUES (?, ?, ?)', [
+            await tx.execute('INSERT INTO account (id, wallet_id, path_index) VALUES (?, ?, ?)', [
                 newAccount.id,
                 newAccount.wallet_id,
                 newAccount.path_index,
             ]);
             for (const secret of newSecrets) {
-                tx.execute(
+                await tx.execute(
                     'INSERT INTO secret (address, secret_key, wallet_id, account_id, chain) VALUES (?, ?, ?, ?, ?)',
                     [secret.address, secret.secret_key, secret.wallet_id, secret.account_id, secret.chain],
                 );
             }
-            tx.commit();
+            await tx.commit();
             this.setCurrentAccountID(newAccount.id);
         });
     };
@@ -163,106 +163,118 @@ class AccountStore {
             path_index: pathIndex,
         };
         return this.db.transaction(async (tx: Transaction) => {
-            tx.execute('INSERT INTO account (id, wallet_id, path_index) VALUES (?, ?, ?)', [
+            await tx.execute('INSERT INTO account (id, wallet_id, path_index) VALUES (?, ?, ?)', [
                 newAccount.id,
                 newAccount.wallet_id,
                 newAccount.path_index,
             ]);
             for (const key of newKeys) {
-                tx.execute(
+                await tx.execute(
                     'INSERT INTO secret (address, secret_key, wallet_id, account_id, chain) VALUES (?, ?, ?, ?, ?)',
                     [key.address, key.secretKey, walletID, newAccount.id, key.chain],
                 );
             }
-            tx.commit();
+            await tx.commit();
             this.setCurrentAccountID(newAccount.id);
         });
     };
 
     public getWalletCount = (): number => {
-        let {rows} = this.db.execute('SELECT COUNT(*) as count FROM wallet');
-        return rows?.item(0).count || 0;
+        let results = this.db.executeSync('SELECT COUNT(*) as count FROM wallet');
+        if (!results) return 0;
+        let rows = results.rows;
+        if (!rows) return 0;
+        return (rows[0].count as number) || 0;
     };
 
     public getAllWallets = (): DBWalletSimple[] => {
-        let {rows} = this.db.execute('SELECT id, label FROM wallet');
-        return rows?._array as DBWalletSimple[];
+        let {rows} = this.db.executeSync('SELECT id, label FROM wallet');
+        return rows as DBWalletSimple[];
     };
 
     public getCurrentWalletAllByAccountID = (accountID: string): DBWallet | undefined => {
-        let {rows} = this.db.execute(
+        let {rows} = this.db.executeSync(
             'SELECT wallet.* FROM wallet JOIN account ON wallet.id = account.wallet_id WHERE account.id = ?',
             [accountID],
         );
-        return rows?.item(0) as DBWallet;
+        if (!rows) return undefined;
+        return rows[0] as DBWallet;
     };
 
     public getWalletIDForAccountID(accountID: string): string | undefined {
-        let {rows} = this.db.execute('SELECT wallet_id FROM account WHERE id = ?', [accountID]);
-        return rows?.item(0).wallet_id;
+        let {rows} = this.db.executeSync('SELECT wallet_id FROM account WHERE id = ?', [accountID]);
+        if (!rows || rows.length == 0) return undefined;
+        return rows[0].wallet_id as string;
     }
 
     public countAccountsForWallet = (walletID: string): number => {
-        let {rows} = this.db.execute('SELECT COUNT(*) as count FROM account WHERE wallet_id = ?', [walletID]);
-        return rows?.item(0).count || 0;
+        let {rows} = this.db.executeSync('SELECT COUNT(*) as count FROM account WHERE wallet_id = ?', [walletID]);
+        if (!rows || rows.length == 0) return 0;
+        return (rows[0].count as number) || 0;
     };
 
     public getWalletMnemonic = (walletID: string): string | undefined => {
-        let {rows} = this.db.execute('SELECT mnemonic FROM wallet WHERE id = ?', [walletID]);
-        return rows?.item(0).mnemonic;
+        let {rows} = this.db.executeSync('SELECT mnemonic FROM wallet WHERE id = ?', [walletID]);
+        if (!rows || rows.length == 0) return undefined;
+        return rows[0].mnemonic as string;
     };
 
     public getNextPathIndex = (walletID: string): number => {
-        let {rows} = this.db.execute('SELECT MAX(path_index) as max_index FROM account WHERE wallet_id = ?', [
+        let {rows} = this.db.executeSync('SELECT MAX(path_index) as max_index FROM account WHERE wallet_id = ?', [
             walletID,
         ]);
-        return (rows?.item(0).max_index || 0) + 1;
+        if (!rows || rows.length == 0) return 0;
+        return (rows[0].max_index as number) + 1 || 0;
     };
 
     public getChainKeyForAddress = (address: string): ChainKey | undefined => {
-        let {rows} = this.db.execute('SELECT chain, secret_key FROM secret WHERE address = ?', [address]);
+        let {rows} = this.db.executeSync('SELECT chain, secret_key FROM secret WHERE address = ?', [address]);
         if (!rows || rows.length === 0) {
             return undefined;
         }
+        const row = rows[0] as {chain: Chain; secret_key: string};
         return {
-            chain: rows.item(0).chain,
+            chain: row.chain,
             address: address,
-            secretKey: rows.item(0).secret_key,
+            secretKey: row.secret_key,
         };
     };
 
     public getAccountByID = (accountID: string): DBAccount | undefined => {
-        let {rows} = this.db.execute('SELECT * FROM account WHERE id = ?', [accountID]);
-        return rows?.item(0) as DBAccount;
+        let {rows} = this.db.executeSync('SELECT * FROM account WHERE id = ?', [accountID]);
+        if (!rows || rows.length == 0) return undefined;
+        return rows[0] as DBAccount;
     };
 
     public getAddressForAccountIDChain = (accountID: string, chain: Chain): string | undefined => {
-        let {rows} = this.db.execute('SELECT address FROM secret WHERE account_id = ? AND chain = ?', [
+        let {rows} = this.db.executeSync('SELECT address FROM secret WHERE account_id = ? AND chain = ?', [
             accountID,
             chain,
         ]);
-        return rows?.item(0).address;
+        if (!rows || rows.length == 0) return undefined;
+        return rows[0].address as string;
     };
 
     public getMyAddressesForChain(chain: Chain): string[] {
-        let {rows} = this.db.execute('SELECT address FROM secret WHERE chain = ?', [chain]);
-        return rows?._array.map((row: any) => row.address) || [];
+        let {rows} = this.db.executeSync('SELECT address FROM secret WHERE chain = ?', [chain]);
+        return rows.map((row: any) => row.address) || [];
     }
 
     public deleteEverything = () => {
-        this.db.execute('DELETE FROM secret');
-        this.db.execute('DELETE FROM account');
-        this.db.execute('DELETE FROM wallet');
+        this.db.executeSync('DELETE FROM secret');
+        this.db.executeSync('DELETE FROM account');
+        this.db.executeSync('DELETE FROM wallet');
     };
 
     public currentAccountID(): string {
         return this.kvDB.getString(AccountStorageKeys.currentAccountID) || '';
     }
 
-    public currentAccount(): DBAccount {
+    public currentAccount(): DBAccount | undefined {
         const currentAccountID = this.currentAccountID();
-        let {rows} = this.db.execute('SELECT * FROM account WHERE id = ?', [currentAccountID]);
-        return rows?.item(0) as DBAccount;
+        let {rows} = this.db.executeSync('SELECT * FROM account WHERE id = ?', [currentAccountID]);
+        if (!rows || rows.length == 0) return undefined;
+        return rows[0] as DBAccount;
     }
 
     public setCurrentAccountID(id: string) {

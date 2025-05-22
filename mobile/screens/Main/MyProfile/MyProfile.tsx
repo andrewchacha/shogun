@@ -16,15 +16,17 @@ import {useMe} from '@/hooks/api/useMe';
 import {useCurrentKeys} from '@/storage/accountStoreHooks';
 import {WalletCard} from '@/screens/Main/MyProfile/components/WalletCard';
 import {WalletValue} from '@/screens/Settings/components/WalletValue';
+import {Chain} from '@/chains/chain';
 
 const MyProfile = ({}: CommonStackScreenProps<'MyProfile'>) => {
-    const theme = useAppTheme();
-    const styles = useThemeStyleSheetProvided(theme, dynamicStyles);
-
     const scrollViewRef = useRef<ScrollView>(null);
     useScrollToTop(scrollViewRef);
-    const {result: keys} = useCurrentKeys();
+
+    const theme = useAppTheme();
+    const styles = useThemeStyleSheetProvided(theme, dynamicStyles);
     const {isLoading, refetch} = useMe(false);
+    const {result: keys} = useCurrentKeys();
+
     if (!keys) return null;
     return (
         <SafeAreaView style={styles.safeAreaView}>
@@ -46,6 +48,9 @@ const MyProfile = ({}: CommonStackScreenProps<'MyProfile'>) => {
                 <Separator space={spacing.l} />
                 <WalletValue />
                 {keys.map(accountKey => {
+                    if (accountKey.chain === Chain.Solana) {
+                        return null;
+                    }
                     return (
                         <WalletCard key={accountKey.address} chain={accountKey.chain} address={accountKey.address} />
                     );

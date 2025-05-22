@@ -23,7 +23,6 @@ import {apiLogin, getApiLoginSignMessage} from '@/utils/api/authLogin';
 import {AccessToken} from '@/storage/token';
 import {getAccountStore} from '@/storage/accountStore';
 import {ChainOperations} from '@/chains/chainOperations';
-import bs58 from 'bs58';
 
 type Strength = 128 | 256;
 const strengthAtom = atom<Strength>(256);

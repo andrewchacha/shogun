@@ -40,6 +40,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import type React from 'react';
 import {useMemo} from 'react';
 import type {CommonStackList, MainTabParamList, RootStackParamList, RootStackScreenProps} from './types';
+import {SqlDB} from '@/storage/sqldb';
+import Circle from '@/screens/Circle/Circle';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -62,7 +64,8 @@ const Navigation: React.FC = () => {
         };
     }, [theme.scheme]);
 
-    const initialRouteName = getAccountStore().currentAccountID() ? 'Main' : 'Welcome';
+    const initialRouteName =
+        getAccountStore().currentAccountID() && SqlDB.getInstance().hasAccounts() ? 'Main' : 'Welcome';
     return (
         <NavigationContainer theme={navigationTheme} ref={navigationRef}>
             <Stack.Navigator initialRouteName={initialRouteName}>
@@ -91,6 +94,11 @@ const Navigation: React.FC = () => {
                         name={'ChatRoom'}
                         component={ChatRoom}
                         options={({route}) => navigatorScreenOptions({route, theme, headerShown: true})}
+                    />
+                    <Stack.Screen
+                        name={'Circle'}
+                        component={Circle}
+                        options={({route}) => navigatorScreenOptions({route, theme, headerShown: false})}
                     />
                 </Stack.Group>
                 <Stack.Group screenOptions={{presentation: 'modal'}}>

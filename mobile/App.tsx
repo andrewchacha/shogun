@@ -35,7 +35,6 @@ import {KeyboardProvider} from 'react-native-keyboard-controller';
 import {queryClient} from '@/storage/queryClient';
 import {AppInit} from '@/AppInit';
 import {shim} from 'react-native-quick-base64';
-import Text from '@/components/Text/Text';
 
 shim();
 

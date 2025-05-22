@@ -1,5 +1,6 @@
 import React, {
     type MutableRefObject,
+    RefObject,
     useCallback,
     useEffect,
     useImperativeHandle,
@@ -32,9 +33,9 @@ export type ModalRef = {
 };
 
 export class MultiAccountModalController {
-    private static modalRef: MutableRefObject<ModalRef | null> = {current: null};
+    private static modalRef: RefObject<ModalRef | null> = {current: null};
 
-    static setRef(ref: MutableRefObject<ModalRef | null>) {
+    static setRef(ref: RefObject<ModalRef | null>) {
         MultiAccountModalController.modalRef = ref;
     }
 
@@ -82,7 +83,6 @@ const MultiAccountBottomSheet = React.forwardRef((props: {}, ref: any) => {
 
     const currentAccountID = useCurrentAccountID();
     const [walletID, setWalletID] = useState('');
-
     const {result: accounts} = useAccounts(walletID || '');
 
     useEffect(() => {
@@ -101,6 +101,7 @@ const MultiAccountBottomSheet = React.forwardRef((props: {}, ref: any) => {
     const openAddAccount = useCallback(() => {
         const store = getAccountStore();
         const currAccount = store.currentAccount();
+        if (!currAccount) return;
         const count = store.countAccountsForWallet(currAccount.wallet_id);
         if (count >= MAX_ACCOUNTS_PER_WALLET) {
             ToastController.show({

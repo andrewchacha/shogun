@@ -36,3 +36,10 @@ export function formatAmount(
     }
     return number.toFormat(precision, BigNumber.ROUND_DOWN);
 }
+
+export function formatComma(amount: number | string | BigNumber | undefined): string {
+    if (!amount) return '0';
+    const number = new BigNumber(amount);
+    if (number.isNaN()) return '0';
+    return number.toFormat(number.decimalPlaces() || 0);
+}

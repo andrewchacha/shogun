@@ -35,8 +35,8 @@ export function useSqlQueryArray<T>(query: string, table: string, args: any[] = 
     useEffect(() => {
         if (!query) return;
         const db = SqlDB.getInstance().getDb();
-        const {rows} = db.execute(query, args);
-        setResult(rows?._array as T);
+        const {rows} = db.executeSync(query, args);
+        setResult(rows as T);
         const unsubscribe = db.reactiveExecute({
             query,
             arguments: args,
@@ -52,8 +52,8 @@ export function useSqlQueryArray<T>(query: string, table: string, args: any[] = 
 
     const executeAndSetResult = (query: string, args: any[] = []) => {
         const db = SqlDB.getInstance().getDb();
-        const {rows} = db.execute(query, args);
-        setResult(rows?._array as T);
+        const {rows} = db.executeSync(query, args);
+        setResult(rows as T);
     };
 
     return {result};

@@ -22,9 +22,12 @@ export function MyAddresses() {
     if (!result) return null;
     return (
         <View style={styles.container}>
-            {result.map(key => (
-                <MyAddressItem key={key.address} chain={key.chain} address={key.address} />
-            ))}
+            {result.map(key => {
+                if (key.chain === Chain.Solana) {
+                    return null;
+                }
+                return <MyAddressItem key={key.address} chain={key.chain} address={key.address} />;
+            })}
         </View>
     );
 }

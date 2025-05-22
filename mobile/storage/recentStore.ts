@@ -34,13 +34,13 @@ class RecentStore {
         const indexChainDate = `CREATE INDEX IF NOT EXISTS chain_date ON ${TableNames.Recent} (chain, date);`;
         const indexFromAddressDate = `CREATE INDEX IF NOT EXISTS from_address_date ON ${TableNames.Recent} (from_address, date);`;
 
-        this.db.execute(createQuery);
-        this.db.execute(indexChainDate);
-        this.db.execute(indexFromAddressDate);
+        this.db.executeSync(createQuery);
+        this.db.executeSync(indexChainDate);
+        this.db.executeSync(indexFromAddressDate);
     }
 
     public addRecent(recent: DBRecent) {
-        this.db.execute(
+        this.db.executeSync(
             `INSERT OR REPLACE INTO ${TableNames.Recent} (address, chain, from_address, date) VALUES (?, ?, ?, ?)`,
             [recent.address, recent.chain, recent.from_address, recent.date],
         );
@@ -48,11 +48,11 @@ class RecentStore {
 
     public getRecentForChain(chain: string): DBRecent[] {
         try {
-            const {rows} = this.db.execute(
+            const {rows} = this.db.executeSync(
                 `SELECT * FROM ${TableNames.Recent} WHERE chain = ? ORDER BY date DESC LIMIT 10`,
                 [chain],
             );
-            return rows?._array as DBRecent[];
+            return rows as DBRecent[];
         } catch (e) {
             console.log('Error getting recent for chain', e);
             return [];

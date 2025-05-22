@@ -31,6 +31,7 @@ export const WalletValue = React.memo(() => {
         const nonZeroKeys = keys.filter(key => new BigNumber(walletsValue[key.address] || 0).gt(0));
         const widths = [];
         for (let key of keys) {
+            if (key.chain === Chain.Solana) continue;
             const ratio = new BigNumber(walletsValue[key.address] || 0).div(totalWalletValue).toNumber();
             if (ratio <= 0) continue;
             let w = 0;
@@ -52,7 +53,7 @@ export const WalletValue = React.memo(() => {
             <Text style={styles.text} weight={'600'}>
                 ${formatAmount(totalWalletValue, {price: 1})}
             </Text>
-            <View style={styles.drawWrap}>
+            {/* <View style={styles.drawWrap}>
                 {walletsWidth.map(({chain, width}, index) => {
                     return (
                         <View key={chain} style={{width: width}}>
@@ -71,7 +72,7 @@ export const WalletValue = React.memo(() => {
                         </View>
                     );
                 })}
-            </View>
+            </View> */}
         </View>
     );
 });

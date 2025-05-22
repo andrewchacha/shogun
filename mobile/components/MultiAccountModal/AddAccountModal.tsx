@@ -14,7 +14,6 @@ import Pressable from '@/components/Button/Pressable';
 import {ToastController} from '@/components/Toast/Toast';
 import {apiLogin, getApiLoginParamsWithSigner} from '@/utils/api/authLogin';
 import {Chain} from '@/chains/chain';
-import bs58 from 'bs58';
 import {AccessToken} from '@/storage/token';
 import {CommonActions} from '@react-navigation/native';
 import {navigateDispatch} from '@/navigation/shared';
@@ -80,6 +79,7 @@ const AddAccountModal = (props: Props, ref: any) => {
                 return;
             }
         } catch (e) {
+            console.log('error creating account', e);
             setIsCreating(false);
             ToastController.show({kind: 'error', content: `Error: ${JSON.stringify(e)}`});
         } finally {

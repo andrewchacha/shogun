@@ -2,7 +2,7 @@ import {Chain} from '@/chains/chain';
 import {ChainKey} from '@/utils/types/wallet';
 import {TokenInfo} from '@/utils/api/tokenInfo';
 import {ChainInterface, FeeEstimate} from '@/chains/chainInterface';
-import {mnemonicToSeed} from '@dreson4/react-native-quick-bip39';
+import {mnemonicToSeed} from '@/utils/bip39/bip39';
 import {derivePath} from 'ed25519-hd-key';
 import {decodeSuiPrivateKey} from '@/chains/sui/suiKey';
 import bs58 from 'bs58';

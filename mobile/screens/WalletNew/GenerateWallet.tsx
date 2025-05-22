@@ -4,7 +4,7 @@ import Loading from '@/components/Loading/Loading';
 import Separator from '@/components/Separator/Separator';
 import Text from '@/components/Text/Text';
 import {ToastController} from '@/components/Toast/Toast';
-import {Wordlists, generateMnemonic} from '@dreson4/react-native-quick-bip39';
+import {Wordlists, generateMnemonic} from '@/utils/bip39/bip39';
 import {AntDesign, Feather, MaterialIcons} from '@expo/vector-icons';
 import {useAppTheme} from '@/hooks/utility/useAppTheme';
 import {useThemeStyleSheetProvided} from '@/hooks/utility/useThemeStyleSheet';

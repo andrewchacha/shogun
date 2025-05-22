@@ -33,7 +33,7 @@ web-build/
 
 # typescript
 *.tsbuildinfo
-
+*.env
 
 .idea/
 .vscode/

@@ -11,7 +11,7 @@ import {
     TransactionMessage,
     VersionedTransaction,
 } from '@solana/web3.js';
-import {mnemonicToSeed} from '@dreson4/react-native-quick-bip39';
+import {mnemonicToSeed} from '@/utils/bip39/bip39';
 import {derivePath} from 'ed25519-hd-key';
 import bs58 from 'bs58';
 import nacl from 'tweetnacl';

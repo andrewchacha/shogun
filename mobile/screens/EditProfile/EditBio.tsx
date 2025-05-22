@@ -12,7 +12,7 @@ import {useUserUpdater} from '@/hooks/api/useUserUpdater';
 import Button from '@/components/Button/Button';
 import {ToastController} from '@/components/Toast/Toast';
 import * as Haptics from 'expo-haptics';
-import {MarkdownTextInput} from '@expensify/react-native-live-markdown';
+// import {MarkdownTextInput} from '@expensify/react-native-live-markdown';
 import {useSystem} from '@/hooks/api/useSystem';
 
 const EditBio = ({navigation}: CommonStackScreenProps<'EditBio'>) => {
@@ -71,14 +71,14 @@ const EditBio = ({navigation}: CommonStackScreenProps<'EditBio'>) => {
                 </View>
                 <Separator space={spacing.s} />
                 <View style={styles.inputWrap}>
-                    <MarkdownTextInput
+                    {/* <MarkdownTextInput
                         placeholder={'Enter your Bio in markdown'}
                         placeholderTextColor={theme.colors.textTertiary}
                         style={styles.textInput}
                         value={newBio}
                         multiline={true}
                         onChangeText={onChangeText}
-                    />
+                    /> */}
                 </View>
 
                 <Separator space={spacing.xl} />

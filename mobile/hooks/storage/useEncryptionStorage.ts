@@ -58,7 +58,7 @@ export function useEncryptionStorage() {
         const randomKey = Buffer.from(crypto.randomBytes(32)).toString('hex');
         void security.storeEncryptionKey(randomKey);
 
-        initStores(randomKey);
+        // initStores(randomKey);
         setIsLoaded(true);
     }
 

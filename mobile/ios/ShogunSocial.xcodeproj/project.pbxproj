@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		1C81A4C0D9E3B388B16A443C /* libPods-ShogunSocial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2103DEC313B9FD58E5709FBD /* libPods-ShogunSocial.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		9A216D32CE5CFBEF7A87A638 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AEF4D1C9724522505D92FA /* ExpoModulesProvider.swift */; };
+		6D5189020B432877B289B260 /* libPods-ShogunSocial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF0F043DA90589A2F2DCBA2 /* libPods-ShogunSocial.a */; };
+		71E5DD0B5BE8ACE7B6EC6F25 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 301F607A4070FA8648E6554B /* PrivacyInfo.xcprivacy */; };
+		79D3DA2EF3CA0DBEA4BC7D7D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B2A0AD4D887C2EF81126B2 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		CBBDFB605A735E34AB6B9983 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5EEA5942F3F184688428076E /* PrivacyInfo.xcprivacy */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,13 +20,13 @@
 		13B07F961A680F5B00A75B9A /* ShogunSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShogunSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShogunSocial/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ShogunSocial/Info.plist; sourceTree = "<group>"; };
-		2103DEC313B9FD58E5709FBD /* libPods-ShogunSocial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShogunSocial.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		31F71BCBCC33B81E3A53F1C5 /* Pods-ShogunSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShogunSocial.release.xcconfig"; path = "Target Support Files/Pods-ShogunSocial/Pods-ShogunSocial.release.xcconfig"; sourceTree = "<group>"; };
-		5EEA5942F3F184688428076E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ShogunSocial/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		88AEF4D1C9724522505D92FA /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-ShogunSocial/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		1AF0F043DA90589A2F2DCBA2 /* libPods-ShogunSocial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShogunSocial.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E864ED0254DB1B637BEC1C2 /* Pods-ShogunSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShogunSocial.release.xcconfig"; path = "Target Support Files/Pods-ShogunSocial/Pods-ShogunSocial.release.xcconfig"; sourceTree = "<group>"; };
+		301F607A4070FA8648E6554B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ShogunSocial/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		67B2A0AD4D887C2EF81126B2 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-ShogunSocial/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = ShogunSocial/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		E92296A73CA827CA09AD055C /* Pods-ShogunSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShogunSocial.debug.xcconfig"; path = "Target Support Files/Pods-ShogunSocial/Pods-ShogunSocial.debug.xcconfig"; sourceTree = "<group>"; };
+		C2851B0828D43429C368A852 /* Pods-ShogunSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShogunSocial.debug.xcconfig"; path = "Target Support Files/Pods-ShogunSocial/Pods-ShogunSocial.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ShogunSocial/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* ShogunSocial-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ShogunSocial-Bridging-Header.h"; path = "ShogunSocial/ShogunSocial-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -37,23 +37,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C81A4C0D9E3B388B16A443C /* libPods-ShogunSocial.a in Frameworks */,
+				6D5189020B432877B289B260 /* libPods-ShogunSocial.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A32605D632C953A11AE1A68 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E92296A73CA827CA09AD055C /* Pods-ShogunSocial.debug.xcconfig */,
-				31F71BCBCC33B81E3A53F1C5 /* Pods-ShogunSocial.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* ShogunSocial */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,7 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				5EEA5942F3F184688428076E /* PrivacyInfo.xcprivacy */,
+				301F607A4070FA8648E6554B /* PrivacyInfo.xcprivacy */,
 			);
 			name = ShogunSocial;
 			sourceTree = "<group>";
@@ -72,9 +62,26 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				2103DEC313B9FD58E5709FBD /* libPods-ShogunSocial.a */,
+				1AF0F043DA90589A2F2DCBA2 /* libPods-ShogunSocial.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53210E83CE732A37E85791C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2851B0828D43429C368A852 /* Pods-ShogunSocial.debug.xcconfig */,
+				2E864ED0254DB1B637BEC1C2 /* Pods-ShogunSocial.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6A337332CAD42473F41F3EF4 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				C0F77A6EABC90FA00AD25AB5 /* ShogunSocial */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -91,8 +98,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				0A32605D632C953A11AE1A68 /* Pods */,
-				F26BA0412274983F6C582E21 /* ExpoModulesProviders */,
+				53210E83CE732A37E85791C3 /* Pods */,
+				6A337332CAD42473F41F3EF4 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -107,14 +114,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AC53BF3F5325BF99E7F5AC65 /* ShogunSocial */ = {
-			isa = PBXGroup;
-			children = (
-				88AEF4D1C9724522505D92FA /* ExpoModulesProvider.swift */,
-			);
-			name = ShogunSocial;
-			sourceTree = "<group>";
-		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,12 +123,12 @@
 			path = ShogunSocial/Supporting;
 			sourceTree = "<group>";
 		};
-		F26BA0412274983F6C582E21 /* ExpoModulesProviders */ = {
+		C0F77A6EABC90FA00AD25AB5 /* ShogunSocial */ = {
 			isa = PBXGroup;
 			children = (
-				AC53BF3F5325BF99E7F5AC65 /* ShogunSocial */,
+				67B2A0AD4D887C2EF81126B2 /* ExpoModulesProvider.swift */,
 			);
-			name = ExpoModulesProviders;
+			name = ShogunSocial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,13 +139,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ShogunSocial" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				443843027C84C8A63DA8BDBF /* [Expo] Configure project */,
+				2D97300EC4B55F49B8F244C9 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				DED0155AFD2E8A887B566A06 /* [CP] Embed Pods Frameworks */,
+				4BB1994F9D0A8756A316880E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,9 +165,7 @@
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 8YKWYHNG3G;
 						LastSwiftMigration = 1250;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -198,7 +195,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				CBBDFB605A735E34AB6B9983 /* PrivacyInfo.xcprivacy in Resources */,
+				71E5DD0B5BE8ACE7B6EC6F25 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +239,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		443843027C84C8A63DA8BDBF /* [Expo] Configure project */ = {
+		2D97300EC4B55F49B8F244C9 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -260,6 +257,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-ShogunSocial/expo-configure-project.sh\"\n";
+		};
+		4BB1994F9D0A8756A316880E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShogunSocial/Pods-ShogunSocial-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShogunSocial/Pods-ShogunSocial-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -309,26 +326,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShogunSocial/Pods-ShogunSocial-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DED0155AFD2E8A887B566A06 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShogunSocial/Pods-ShogunSocial-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShogunSocial/Pods-ShogunSocial-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -337,7 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				9A216D32CE5CFBEF7A87A638 /* ExpoModulesProvider.swift in Sources */,
+				79D3DA2EF3CA0DBEA4BC7D7D /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,13 +343,11 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E92296A73CA827CA09AD055C /* Pods-ShogunSocial.debug.xcconfig */;
+			baseConfigurationReference = C2851B0828D43429C368A852 /* Pods-ShogunSocial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ShogunSocial/ShogunSocial.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8YKWYHNG3G;
 				ENABLE_BITCODE = NO;
@@ -361,6 +356,8 @@
 					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = ShogunSocial/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Shogun Social";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -385,16 +382,16 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31F71BCBCC33B81E3A53F1C5 /* Pods-ShogunSocial.release.xcconfig */;
+			baseConfigurationReference = 2E864ED0254DB1B637BEC1C2 /* Pods-ShogunSocial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ShogunSocial/ShogunSocial.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8YKWYHNG3G;
 				INFOPLIST_FILE = ShogunSocial/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Shogun Social";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -471,10 +468,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -529,10 +523,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

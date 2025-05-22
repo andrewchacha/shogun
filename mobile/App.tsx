@@ -1,7 +1,8 @@
+import 'react-native-quick-crypto';
 import 'text-encoding-polyfill';
-import './polyfills';
 import 'react-native-reanimated';
 import 'react-native-gesture-handler';
+import './polyfills';
 
 import Toast from '@/components/Toast/Toast';
 import {
@@ -15,6 +16,7 @@ import {
     Poppins_800ExtraBold,
     Poppins_900Black,
 } from '@expo-google-fonts/poppins';
+import * as SplashScreen from 'expo-splash-screen';
 
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {useEncryptionStorage} from '@/hooks/storage/useEncryptionStorage';
@@ -24,16 +26,17 @@ import {encryptedStorage} from '@/storage/mmkv';
 import {createSyncStoragePersister} from '@tanstack/query-sync-storage-persister';
 import {PersistQueryClientProvider} from '@tanstack/react-query-persist-client';
 import {useFonts} from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
 import {StatusBar} from 'expo-status-bar';
 import React, {useCallback} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {KeyboardProvider} from 'react-native-keyboard-controller';
 import {queryClient} from '@/storage/queryClient';
 import {AppInit} from '@/AppInit';
 import {shim} from 'react-native-quick-base64';
+import Text from '@/components/Text/Text';
+
 shim();
 
 const clientStorage = {

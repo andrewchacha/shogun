@@ -19,6 +19,7 @@ export default function TokenItem(prop: WalletAsset) {
 
     const tokenDetailModal = useRef<BottomSheetModal>(null);
     const openTokenDetailModal = useCallback(() => {
+        console.log('openTokenDetailModal');
         tokenDetailModal.current?.present();
     }, []);
 

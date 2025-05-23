@@ -1,6 +1,6 @@
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {BottomSheetBackdrop, BottomSheetModal} from '@gorhom/bottom-sheet';
+import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import {useBottomSheetBackHandler} from '@/hooks/utility/useBottomSheetBackHandler';
 import {useThemeStyleSheetProvided} from '@/hooks/utility/useThemeStyleSheet';
 import {useAppTheme} from '@/hooks/utility/useAppTheme';
@@ -11,18 +11,15 @@ import Button from '@/components/Button/Button';
 import Lottie from 'lottie-react-native';
 import Image from '@/components/Image/Image';
 import {Success} from '@/components/Animations/Success';
+import {ModalBackdrop} from '@/components/ModalBackdrop/ModalBackdrop';
 
-interface Props {}
+interface Props {
+    amount?: number;
+}
 
 type mode = 'confirm' | 'sending' | 'success';
 const CryptoRequestPayModal = (props: Props, ref: any) => {
     const {handleSheetPositionChange} = useBottomSheetBackHandler(ref);
-
-    const snapPoints = useMemo(() => [400], []);
-    const renderBackdrop = useCallback(
-        (props: any) => <BottomSheetBackdrop {...props} opacity={0.8} disappearsOnIndex={-1} appearsOnIndex={0} />,
-        [],
-    );
 
     const [mode, setMode] = useState<mode>('confirm');
     const theme = useAppTheme();
@@ -36,8 +33,8 @@ const CryptoRequestPayModal = (props: Props, ref: any) => {
             setMode('success');
             setTimeout(() => {
                 onClose();
-            }, 5000);
-        }, 3000);
+            }, 2000);
+        }, 2000);
     };
 
     return (
@@ -47,62 +44,63 @@ const CryptoRequestPayModal = (props: Props, ref: any) => {
             handleIndicatorStyle={styles.indicator}
             ref={ref}
             onChange={handleSheetPositionChange}
-            backdropComponent={renderBackdrop}
-            snapPoints={snapPoints}>
-            <ModalHead title={'Crypto Request'} onClose={onClose} />
-            <View style={styles.scrollView}>
-                <View style={styles.topWrapper}>
-                    <Image
-                        uri={'https://cdn.midjourney.com/0deddab0-7640-49d9-9b0a-d928cbd94d83/0_0.webp'}
-                        style={styles.thumbnail}
-                    />
-                    <View>
-                        <Text style={styles.name} weight={'600'}>
-                            Luna Kim
-                        </Text>
-                        <Text style={styles.description}>Pay to join the Pizza Party</Text>
-                    </View>
-                </View>
-
-                {mode === 'success' && (
-                    <View style={styles.sendingWrap}>
-                        <Success size={100} bgColor={palette.sky500} />
-                        <Text color={'secondary'}>Sent Successfully</Text>
-                    </View>
-                )}
-                {mode === 'sending' && (
-                    <View style={styles.sendingWrap}>
-                        <Lottie
-                            style={[{width: 100, height: 100, marginTop: spacing.l}]}
-                            resizeMode="cover"
-                            source={require('@/assets/animation/sending.json')}
-                            autoPlay
-                            loop
+            backdropComponent={ModalBackdrop}>
+            <BottomSheetView style={styles.bottomSheetView}>
+                <ModalHead title={'Crypto Request'} onClose={onClose} />
+                <View style={styles.scrollView}>
+                    <View style={styles.topWrapper}>
+                        <Image
+                            uri={'https://cdn.midjourney.com/0deddab0-7640-49d9-9b0a-d928cbd94d83/0_0.webp'}
+                            style={styles.thumbnail}
                         />
-                        <Text color={'secondary'}>Sending crypto! Please wait</Text>
-                    </View>
-                )}
-                {mode === 'confirm' && (
-                    <>
-                        <View style={styles.section}>
-                            <View style={styles.row}>
-                                <Text style={styles.rowKey}>Amount</Text>
-                                <Text style={styles.rowValue}>500 USDC</Text>
-                            </View>
-                            <View style={styles.row}>
-                                <Text style={styles.rowKey}>Chain</Text>
-                                <Text style={styles.rowValue}>Solana</Text>
-                            </View>
-                            <View style={styles.row}>
-                                <Text style={styles.rowKey}>Fee</Text>
-                                <Text style={styles.rowValue}>0.0001 SOL</Text>
-                            </View>
+                        <View>
+                            <Text style={styles.name} weight={'600'}>
+                                Luna Kim
+                            </Text>
+                            <Text style={styles.description}>Pay to join the Pizza Party</Text>
                         </View>
-                        <Text style={styles.warning}>Careful! Do not send crypto to people you don't know</Text>
-                        <Button title={'Pay'} onPress={onSend} containerStyle={styles.payButton} />
-                    </>
-                )}
-            </View>
+                    </View>
+
+                    {mode === 'success' && (
+                        <View style={styles.sendingWrap}>
+                            <Success size={100} bgColor={palette.sky500} />
+                            <Text color={'secondary'}>Sent Successfully</Text>
+                        </View>
+                    )}
+                    {mode === 'sending' && (
+                        <View style={styles.sendingWrap}>
+                            <Lottie
+                                style={[{width: 100, height: 100, marginTop: spacing.l}]}
+                                resizeMode="cover"
+                                source={require('@/assets/animation/sending.json')}
+                                autoPlay
+                                loop
+                            />
+                            <Text color={'secondary'}>Sending crypto! Please wait</Text>
+                        </View>
+                    )}
+                    {mode === 'confirm' && (
+                        <View>
+                            <View style={styles.section}>
+                                <View style={styles.row}>
+                                    <Text style={styles.rowKey}>Amount</Text>
+                                    <Text style={styles.rowValue}>50 USDC</Text>
+                                </View>
+                                <View style={styles.row}>
+                                    <Text style={styles.rowKey}>Chain</Text>
+                                    <Text style={styles.rowValue}>Sui</Text>
+                                </View>
+                                <View style={styles.row}>
+                                    <Text style={styles.rowKey}>Fee</Text>
+                                    <Text style={styles.rowValue}>~$0.01</Text>
+                                </View>
+                            </View>
+                            <Text style={styles.warning}>Careful! Do not send crypto to people you don't know</Text>
+                            <Button title={'Pay'} onPress={onSend} containerStyle={styles.payButton} />
+                        </View>
+                    )}
+                </View>
+            </BottomSheetView>
         </BottomSheetModal>
     );
 };
@@ -111,6 +109,9 @@ const dynamicStyles = (theme: AppTheme) =>
     StyleSheet.create({
         container: {
             backgroundColor: theme.colors.modalBackground,
+        },
+        bottomSheetView: {
+            paddingBottom: spacing.xl,
         },
         scrollView: {
             marginHorizontal: spacing.th,

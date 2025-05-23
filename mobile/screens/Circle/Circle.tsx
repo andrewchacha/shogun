@@ -5,22 +5,26 @@ import type {RootStackScreenProps} from '@/navigation/types';
 import type {AppTheme} from '@/utils/styles/theme';
 import React, {useLayoutEffect, useState} from 'react';
 import {rounded, spacing} from '@/utils/styles';
-import {Pressable, StyleSheet, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {StyleSheet, View} from 'react-native';
 import Image from '@/components/Image/Image';
 import {ScrollView} from 'react-native-gesture-handler';
-import {Entypo, FontAwesome6, MaterialIcons} from '@expo/vector-icons';
+import {AntDesign, Entypo, Feather, FontAwesome6, MaterialIcons} from '@expo/vector-icons';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import Pressable from '@/components/Button/Pressable';
+import {ChatItem} from './components/ChatItem';
+import {chatSamples} from './components/chatsamples';
+import {AddChat} from './components/AddChat';
 
 type Tab = 'Chat' | 'Feed' | 'Vault' | 'Members';
 type TabIconProps = {color: string; size: number};
 const TABS: {title: Tab; icon: (props: TabIconProps) => React.ReactElement}[] = [
     {
-        title: 'Chat',
-        icon: ({color, size}: TabIconProps) => <Entypo name="chat" size={size} color={color} />,
-    },
-    {
         title: 'Feed',
         icon: ({color, size}: TabIconProps) => <MaterialIcons name="dynamic-feed" size={size} color={color} />,
+    },
+    {
+        title: 'Chat',
+        icon: ({color, size}: TabIconProps) => <Entypo name="chat" size={size} color={color} />,
     },
     {
         title: 'Vault',
@@ -35,11 +39,11 @@ const TABS: {title: Tab; icon: (props: TabIconProps) => React.ReactElement}[] = 
 const Circle = ({navigation, route}: RootStackScreenProps<'Circle'>) => {
     const theme = useAppTheme();
     const styles = useThemeStyleSheetProvided(theme, dynamicStyles);
-    const [selectedTab, setSelectedTab] = useState<Tab>('Chat');
+    const [selectedTab, setSelectedTab] = useState<Tab>('Feed');
+    const insets = useSafeAreaInsets();
 
-    const nav = useNavigation();
     useLayoutEffect(() => {
-        nav.setOptions({
+        navigation.setOptions({
             title: route.params.name || '',
         });
     }, [route.params]);
@@ -47,6 +51,11 @@ const Circle = ({navigation, route}: RootStackScreenProps<'Circle'>) => {
     return (
         <View style={styles.container}>
             <Image uri={route.params.thumbnail} style={styles.coverImage} />
+            <View style={[styles.navigationWrap, {top: insets.top}]}>
+                <Pressable style={styles.navigationBack} onPress={navigation.goBack}>
+                    <Feather name="arrow-left" style={styles.navigationBackIcon} />
+                </Pressable>
+            </View>
             <ScrollView contentContainerStyle={styles.contentContainer}>
                 <Text variant="header">{route.params.name}</Text>
                 <Text>
@@ -68,7 +77,10 @@ const Circle = ({navigation, route}: RootStackScreenProps<'Circle'>) => {
                         </Pressable>
                     ))}
                 </View>
+
+                {selectedTab === 'Feed' ? chatSamples.map((item, index) => <ChatItem key={index} {...item} />) : null}
             </ScrollView>
+            {selectedTab === 'Feed' && <AddChat />}
         </View>
     );
 };
@@ -77,6 +89,27 @@ const dynamicStyles = (theme: AppTheme) =>
     StyleSheet.create({
         container: {
             flex: 1,
+        },
+        navigationWrap: {
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            height: 50,
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginHorizontal: spacing.th,
+            zIndex: 100,
+        },
+        navigationBack: {
+            padding: spacing.m,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: theme.colors.mainBackground + '55',
+            borderRadius: rounded.full,
+        },
+        navigationBackIcon: {
+            fontSize: 18,
+            color: theme.colors.textPrimary,
         },
         coverImage: {
             width: '100%',

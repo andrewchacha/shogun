@@ -37,10 +37,10 @@ export function CryptoRequest() {
             </View>
             <View style={styles.innerWrap}>
                 <View style={styles.innerWrapVert}>
-                    <Text style={styles.amount}>500 USDC</Text>
+                    <Text style={styles.amount}>50 USDC</Text>
                     <View style={styles.payOnWrap}>
-                        <ChainLogo chain={'solana'} />
-                        <Text>Pay on Solana</Text>
+                        <ChainLogo chain={'sui'} />
+                        <Text>Pay on Sui</Text>
                     </View>
                 </View>
                 <Tag
